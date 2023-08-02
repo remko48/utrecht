@@ -123,6 +123,7 @@ jobs:
         env:
           BASE_URL: "/utrecht/"
         run: |
+          export NODE_OPTIONS=--max-old-space-size=4096
           pnpm run --if-present build
 
       - name: "Retain build artifact: website"
@@ -221,6 +222,7 @@ jobs:
         env:
           STORYBOOK_REDUCED_MOTION: 1
         run: |
+          export NODE_OPTIONS=--max-old-space-size=4096
           pnpm run --if-present build
 
       - name: Publish to Chromatic
@@ -302,6 +304,7 @@ jobs:
 
       - name: "Continuous Deployment: build"
         run: |
+          export NODE_OPTIONS=--max-old-space-size=4096
           pnpm run --if-present build
 
       - name: "Continuous Deployment: publish to GitHub repository"
