@@ -5,6 +5,7 @@ import { Config } from 'vega';
 
 export interface VegaVisualisationProps extends VegaProps {
   config?: Config;
+  'aria-label'?: string;
 }
 
 const defaultConfig = {
@@ -72,11 +73,15 @@ const defaultConfig = {
 
 export const VegaVisualization = ({ className, config, ...restProps }: VegaVisualisationProps) => {
   return (
-    <Vega
-      {...restProps}
-      renderer={'svg'}
-      className={clsx('utrecht-vega-visualisation', className)}
-      config={{ ...defaultConfig, ...config }}
-    />
+    <div role={'image'} aria-label={restProps['aria-label']}>
+      <div aria-hidden={true}>
+        <Vega
+          {...restProps}
+          renderer={'svg'}
+          className={clsx('utrecht-vega-visualisation', className)}
+          config={{ ...defaultConfig, ...config }}
+        />
+      </div>
+    </div>
   );
 };
