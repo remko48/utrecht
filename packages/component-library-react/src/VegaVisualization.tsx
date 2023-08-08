@@ -3,9 +3,9 @@ import { Vega } from 'react-vega';
 import { VegaProps } from 'react-vega/lib/Vega';
 import { Config } from 'vega';
 
-export interface VegaVisualisationProps extends VegaProps {
-  config?: Config;
+export interface VegaVisualisationProps extends Omit<VegaProps, 'renderer'> {
   'aria-label'?: string;
+  config?: Config;
 }
 
 const defaultConfig = {
@@ -71,12 +71,13 @@ const defaultConfig = {
   },
 } as Config;
 
-export const VegaVisualization = ({ className, config, ...restProps }: VegaVisualisationProps) => {
+export const VegaVisualization = ({ actions = false, className, config, ...restProps }: VegaVisualisationProps) => {
   return (
     <div role={'image'} aria-label={restProps['aria-label']}>
       <div aria-hidden={true}>
         <Vega
           {...restProps}
+          actions={actions}
           renderer={'svg'}
           className={clsx('utrecht-vega-visualisation', className)}
           config={{ ...defaultConfig, ...config }}
