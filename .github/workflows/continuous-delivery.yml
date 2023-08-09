@@ -121,9 +121,9 @@ jobs:
 
       - name: "Continuous Integration: build"
         env:
+          NODE_OPTIONS: "--max-old-space-size=4096"
           BASE_URL: "/utrecht/"
         run: |
-          export NODE_OPTIONS=--max-old-space-size=4096
           pnpm run --if-present build
 
       - name: "Retain build artifact: website"
@@ -220,9 +220,9 @@ jobs:
 
       - name: "Continuous Integration: build Storybook with animation disabled"
         env:
+          NODE_OPTIONS: "--max-old-space-size=4096"
           STORYBOOK_REDUCED_MOTION: 1
         run: |
-          export NODE_OPTIONS=--max-old-space-size=4096
           pnpm run --if-present build
 
       - name: Publish to Chromatic
@@ -303,8 +303,9 @@ jobs:
           pnpm ls --recursive
 
       - name: "Continuous Deployment: build"
+        env:
+          NODE_OPTIONS: "--max-old-space-size=4096"
         run: |
-          export NODE_OPTIONS=--max-old-space-size=4096
           pnpm run --if-present build
 
       - name: "Continuous Deployment: publish to GitHub repository"
