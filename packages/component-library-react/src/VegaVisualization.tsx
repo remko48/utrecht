@@ -39,7 +39,7 @@ const defaultConfig = {
   legend: { labelFontSize: 16, titleFontSize: 16 },
   bar: { width: { band: 0.85 } },
   view: { stroke: null },
-  padding: { left: 20, top: 20, right: 20, bottom: 20 },
+  padding: { left: 20, top: 20, right: 25, bottom: 20 },
   locale: {
     number: {
       decimal: ',',
