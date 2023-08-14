@@ -25,6 +25,8 @@ const defaultConfig = {
     ticks: false,
     labelPadding: 12,
     domainColor: "var(--utrecht-vega-visualization-axis-domain-color, 'black')",
+    gridColor: "var(--utrecht-vega-visualization-axis-grid-color, 'gray')",
+    tickColor: "var(--utrecht-vega-visualization-axis-tick-color, 'black')",
   },
   axisY: {
     titleAngle: 0,
